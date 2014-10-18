@@ -42,6 +42,8 @@ class Camp_Certificate {
 	private function __construct() {
 		// Load plugin text domain.
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+
+		$this->includes();
 	}
 
 	/**
@@ -68,6 +70,15 @@ class Camp_Certificate {
 
 		load_textdomain( 'camp-certificate', trailingslashit( WP_LANG_DIR ) . 'camp-certificate/camp-certificate-' . $locale . '.mo' );
 		load_plugin_textdomain( 'camp-certificate', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
+
+	/**
+	 * Includes.
+	 *
+	 * @return void
+	 */
+	private function includes() {
+		include_once 'includes/class-camp-certificate-post-types.php';
 	}
 }
 
