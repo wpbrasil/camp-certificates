@@ -13,6 +13,7 @@ class Camp_Certificate_Post_Types {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_types' ), 5 );
+		add_action( 'init', array( $this, 'register_taxonomies' ), 5 );
 	}
 
 	/**
@@ -52,6 +53,33 @@ class Camp_Certificate_Post_Types {
 		) );
 	}
 
+	/**
+	 * Register Taxonomies.
+	 */
+	public function register_taxonomies() {
+		if ( taxonomy_exists( 'cc_events' ) ) {
+			return;
+		}
+
+		register_taxonomy( 'cc_events', 'cc_attendees', array(
+			'labels'       => array(
+				'name'              => _x( 'Events', 'taxonomy general name', 'camp-certificate' ),
+				'singular_name'     => _x( 'Event', 'taxonomy singular name', 'camp-certificate' ),
+				'menu_name'         => _x( 'Events', 'admin menu', 'camp-certificate' ),
+				'search_items'      => __( 'Search Events', 'camp-certificate' ),
+				'all_items'         => __( 'All Events', 'camp-certificate' ),
+				'parent_item'       => __( 'Parent Events', 'camp-certificate' ),
+				'parent_item_colon' => __( 'Parent Events:', 'camp-certificate' ),
+				'edit_item'         => __( 'Edit Events', 'camp-certificate' ),
+				'update_item'       => __( 'Update Events', 'camp-certificate' ),
+				'add_new_item'      => __( 'Add New Events', 'camp-certificate' ),
+				'new_item_name'     => __( 'New Events', 'camp-certificate' )
+			),
+			'public'       => false,
+			'show_ui'      => true,
+			'hierarchical' => true
+		) );
+	}
 }
 
 new Camp_Certificate_Post_Types();
