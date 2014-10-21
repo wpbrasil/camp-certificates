@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: CampCertificate
- * Plugin URI: http://github.com/wpbrasil/camp-certificate
+ * Plugin Name: CampCertificates
+ * Plugin URI: http://github.com/wpbrasil/camp-certificates
  * Description: Generate certificates for WordCamp attendees.
  * Author: Claudio Sanches
  * Author URI: http://claudiosmweb.com/
  * Version: 1.0.0
  * License: GPLv2 or later
- * Text Domain: camp-certificate
+ * Text Domain: camp-certificates
  * Domain Path: languages/
  */
 
@@ -15,12 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'Camp_Certificate' ) ) :
+if ( ! class_exists( 'Camp_Certificates' ) ) :
 
 /**
- * CampCertificate main class.
+ * Camp Certificates main class.
  */
-class Camp_Certificate {
+class Camp_Certificates {
 
 	/**
 	 * Plugin version.
@@ -66,10 +66,10 @@ class Camp_Certificate {
 	 * @return void
 	 */
 	public function load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'camp-certificate' );
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'camp-certificates' );
 
-		load_textdomain( 'camp-certificate', trailingslashit( WP_LANG_DIR ) . 'camp-certificate/camp-certificate-' . $locale . '.mo' );
-		load_plugin_textdomain( 'camp-certificate', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_textdomain( 'camp-certificates', trailingslashit( WP_LANG_DIR ) . 'camp-certificates/camp-certificates-' . $locale . '.mo' );
+		load_plugin_textdomain( 'camp-certificates', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
@@ -78,10 +78,10 @@ class Camp_Certificate {
 	 * @return void
 	 */
 	private function includes() {
-		include_once 'includes/class-camp-certificate-post-types.php';
+		include_once 'includes/class-camp-certificates-post-types.php';
 	}
 }
 
-add_action( 'plugins_loaded', array( 'Camp_Certificate', 'get_instance' ), 0 );
+add_action( 'plugins_loaded', array( 'Camp_Certificates', 'get_instance' ), 0 );
 
 endif;
