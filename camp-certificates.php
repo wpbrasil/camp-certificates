@@ -43,6 +43,10 @@ class Camp_Certificates {
 		// Load plugin text domain.
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
+		if ( is_admin() ) {
+			$this->admin_includes();
+		}
+
 		$this->includes();
 	}
 
@@ -79,6 +83,15 @@ class Camp_Certificates {
 	 */
 	private function includes() {
 		include_once 'includes/class-camp-certificates-post-types.php';
+	}
+
+	/**
+	 * Admin includes.
+	 *
+	 * @return void
+	 */
+	private function admin_includes() {
+		include_once 'includes/admin/class-camp-certificates-admin.php';
 	}
 }
 
