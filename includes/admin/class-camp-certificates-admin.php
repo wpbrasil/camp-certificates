@@ -13,6 +13,11 @@ class Camp_Certificates_Admin {
 	 */
 	public function __construct() {
 
+		$this->includes();
+	}
+
+	public function includes() {
+		include_once 'class-camp-certificates-admin-metaboxes.php';
 	}
 }
 
