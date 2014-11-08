@@ -21,6 +21,24 @@ class Camp_Certificates_Admin_Metaboxes {
 	 * @return void
 	 */
 	public function register_meta_boxes() {
+		add_meta_box(
+			'cc_events_metabox',
+			__( 'Event Data', 'camp-certificates' ),
+			array( $this, 'metabox_events' ),
+			'cc_events',
+			'normal',
+			'high'
+		);
+	}
+
+	/**
+	 * Metabox Events.
+	 *
+	 * @param  WP_Post $post
+	 *
+	 * @return string
+	 */
+	public function metabox_events( $post ) {
 
 	}
 }
