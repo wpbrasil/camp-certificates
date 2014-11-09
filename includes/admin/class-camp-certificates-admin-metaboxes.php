@@ -29,6 +29,15 @@ class Camp_Certificates_Admin_Metaboxes {
 			'normal',
 			'high'
 		);
+
+		add_meta_box(
+			'cc_attendees_metabox',
+			__( 'Attendee Data', 'camp-certificates' ),
+			array( $this, 'metabox_attendees' ),
+			'cc_attendees',
+			'normal',
+			'high'
+		);
 	}
 
 	/**
@@ -39,6 +48,17 @@ class Camp_Certificates_Admin_Metaboxes {
 	 * @return string
 	 */
 	public function metabox_events( $post ) {
+
+	}
+
+	/**
+	 * Metabox Attendees.
+	 *
+	 * @param  WP_Post $post
+	 *
+	 * @return string
+	 */
+	public function metabox_attendees( $post ) {
 
 	}
 }
