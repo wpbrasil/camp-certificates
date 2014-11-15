@@ -57,6 +57,8 @@ class Camp_Certificates_Admin_Metaboxes {
 	 */
 	public function metabox_events( $post ) {
 		$this->_get_nonce_field();
+
+		include_once 'views/html-events-metabox.php';
 	}
 
 	/**
@@ -68,6 +70,8 @@ class Camp_Certificates_Admin_Metaboxes {
 	 */
 	public function metabox_attendees( $post ) {
 		$this->_get_nonce_field();
+
+		include_once 'views/html-attendees-metabox.php';
 	}
 
 	/**
