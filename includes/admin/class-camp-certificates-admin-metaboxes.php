@@ -125,12 +125,12 @@ class Camp_Certificates_Admin_Metaboxes {
 	 */
 	private function _save_events_data( $post_id, $posted ) {
 		$fields = array(
-			'cc_country',
-			'cc_city',
-			'cc_date',
-			'cc_font',
-			'cc_font_size',
-			'cc_image'
+			'cc_events_country',
+			'cc_events_city',
+			'cc_events_date',
+			'cc_events_font',
+			'cc_events_font_size',
+			'cc_events_image'
 		);
 
 		foreach ( $fields as $field ) {
@@ -149,7 +149,16 @@ class Camp_Certificates_Admin_Metaboxes {
 	 * @return void
 	 */
 	private function _save_attendees_data( $post_id, $posted ) {
+		$fields = array(
+			'cc_attendees_email',
+			'cc_attendees_event'
+		);
 
+		foreach ( $fields as $field ) {
+			if ( isset( $posted[ $field ] ) ) {
+				update_post_meta( $post_id, '_' . $field, sanitize_text_field( $posted[ $field ] ) );
+			}
+		}
 	}
 }
 
