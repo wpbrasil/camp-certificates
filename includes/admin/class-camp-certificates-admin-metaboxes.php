@@ -124,7 +124,20 @@ class Camp_Certificates_Admin_Metaboxes {
 	 * @return void
 	 */
 	private function _save_events_data( $post_id, $posted ) {
+		$fields = array(
+			'cc_country',
+			'cc_city',
+			'cc_date',
+			'cc_font',
+			'cc_font_size',
+			'cc_image'
+		);
 
+		foreach ( $fields as $field ) {
+			if ( isset( $posted[ $field ] ) ) {
+				update_post_meta( $post_id, '_' . $field, sanitize_text_field( $posted[ $field ] ) );
+			}
+		}
 	}
 
 	/**
